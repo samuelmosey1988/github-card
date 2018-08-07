@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Card, Button } from 'semantic-ui-react'
 
 class App extends Component {
   state={users: null, active: false}
@@ -20,16 +21,16 @@ class App extends Component {
   }
   render() {
     return<div>
-      <button onClick={this.handleClick}> Party Button </button>
+      <Button onClick={this.handleClick}> Party Button </Button>
       {this.state.active ?
-        <div>
-          <h1>{this.state.users.login}</h1>
-          <img src={this.state.users.avatar_url}>
-          </img>
-          <h2>({"Public Repos - " + this.state.users.public_repos})</h2>
-          <h2>({"Followers - " + this.state.users.followers})</h2>
-        </div> : null}
-
+        <Card
+        image={this.state.users.avatar_url}
+        header={this.state.users.login}
+        meta={"Followers - " + this.state.users.followers}
+        description={"Public Repos - " + this.state.users.public_repos}
+      />
+        : null}
+        
     
     </div>
   }
